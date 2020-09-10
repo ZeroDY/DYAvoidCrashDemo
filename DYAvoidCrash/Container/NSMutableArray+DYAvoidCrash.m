@@ -18,11 +18,10 @@ DYStaticHookPrivateClass(__NSArrayM,
     if (index >= self.count) {
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"index %@ out of count %@ of marray.", @(index), @(self.count)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(objectAtIndexedSubscript:)),
             @"reason":reason,
@@ -74,11 +73,9 @@ DYStaticHookPrivateClass(__NSArrayM,
     if (index >= self.count) {
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
         NSString *reason = [NSString stringWithFormat:@"index %@ out of count %@ of marray.", @(index), @(self.count)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(removeObjectAtIndex:)),
             @"reason":reason,
@@ -104,11 +101,10 @@ DYStaticHookPrivateClass(__NSArrayM,
         if (index > self.count) {
             
             NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-            NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+            
             NSString *reason = [NSString stringWithFormat:@"index %@ out of count %@ of marray.", @(index), @(self.count)];
             
             NSDictionary *errorInfo = @{
-                @"place":place,
                 @"target":[self class],
                 @"method":DYSEL2Str(@selector(setObject:atIndexedSubscript:)),
                 @"reason":reason,
@@ -122,11 +118,10 @@ DYStaticHookPrivateClass(__NSArrayM,
     } else {
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"object appear nil object is %@.", obj];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(setObject:atIndexedSubscript:)),
             @"reason":reason,

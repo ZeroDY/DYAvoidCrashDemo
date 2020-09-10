@@ -26,11 +26,10 @@
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-    NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+    
     NSString *reason = @"Dangling Pointer .";
     
     NSDictionary *errorInfo = @{
-        @"place":place,
         @"target":[self class],
         @"method":NSStringFromSelector(_cmd),
         @"reason":reason,

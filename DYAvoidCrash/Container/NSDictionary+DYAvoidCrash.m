@@ -24,12 +24,9 @@ DYStaticHookMetaClass(NSDictionary,
         id tmpItem = objects[i];
         id tmpKey = keys[i];
         if (tmpItem == nil || tmpKey == nil) {
-            
             NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-            NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
             NSString *reason = @"NSDictionary constructor appear nil";
             NSDictionary *errorInfo = @{
-                @"place":place,
                 @"target":[self class],
                 @"method":DYSEL2Str(@selector(dictionaryWithObjects:forKeys:count:)),
                 @"reason":reason,

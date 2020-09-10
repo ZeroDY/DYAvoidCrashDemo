@@ -20,11 +20,9 @@ DYStaticHookClass(NSCache,
         DYHookOrgin(obj,key);
     } else {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
         NSString *reason = [NSString stringWithFormat:@"key or value appear nil- key is %@, object is %@.", key, obj];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(setObject:forKey:)),
             @"reason":reason,
@@ -48,11 +46,9 @@ DYStaticHookClass(NSCache,
         DYHookOrgin(obj,key,g);
     } else {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
         NSString *reason = [NSString stringWithFormat:@"key or value appear nil- key is %@, object is %@.", key, obj];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(setObject:forKey:cost:)),
             @"reason":reason,

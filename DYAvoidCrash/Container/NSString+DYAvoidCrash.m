@@ -26,11 +26,10 @@ DYStaticHookPrivateClass(__NSCFConstantString,
                          (NSUInteger)index) {
     if (index >= self.length) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"index %@ out of length %@ of string.", @(index), @(self.length)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(characterAtIndex:)),
             @"reason":reason,
@@ -55,11 +54,10 @@ DYStaticHookPrivateClass(__NSCFConstantString,
                          (NSUInteger)index) {
     if (index >= self.length) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"index %@ out of length %@ of string.", @(index), @(self.length)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(substringFromIndex:)),
             @"reason":reason,
@@ -83,11 +81,10 @@ DYStaticHookPrivateClass(__NSCFConstantString,
                          (NSUInteger)index) {
     if (index >= self.length) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"index %@ out of length %@ of string.", @(index), @(self.length)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(substringToIndex:)),
             @"reason":reason,
@@ -113,11 +110,10 @@ DYStaticHookPrivateClass(__NSCFConstantString,
     NSUInteger index = range.location + range.length;
     if (index > self.length) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"range (%@,%@) out of length %@ of string.", @(range.location), @(range.length), @(self.length)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(substringWithRange:)),
             @"reason":reason,

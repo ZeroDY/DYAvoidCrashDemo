@@ -107,11 +107,9 @@ DYStaticHookClass(NSArray,
                   (NSIndexSet *)indexes) {
     if (indexes.lastIndex >= self.count) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
         NSString *reason = [NSString stringWithFormat:@"index %@ out of count %@ of array.", @(indexes.lastIndex), @(self.count)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(objectsAtIndexes:)),
             @"reason":reason,

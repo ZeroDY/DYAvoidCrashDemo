@@ -62,11 +62,10 @@ DYStaticHookClass(NSObject,
         [stub addFunc:aSelector];
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @"method forword to SmartFunction Object default implement like send message to nil.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":NSStringFromSelector(aSelector),
             @"reason":reason,
@@ -96,11 +95,10 @@ DYStaticHookMetaClass(NSObject,
         [DYAvoidCrashStubObject addClassFunc:aSelector];
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @"method forword to SmartFunction Object default implement like send message to nil.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":NSStringFromSelector(aSelector),
             @"reason":reason,

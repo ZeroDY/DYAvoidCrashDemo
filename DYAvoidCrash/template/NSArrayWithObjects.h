@@ -5,11 +5,10 @@ for (int i = 0; i < cnt; i++) {
     id objc = objects[i];
     if (objc == nil) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @"Array constructor appear nil.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(arrayWithObjects:count:)),
             @"reason":reason,

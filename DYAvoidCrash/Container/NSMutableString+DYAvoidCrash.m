@@ -27,11 +27,10 @@ DYStaticHookPrivateClass(__NSCFString,
                          (NSUInteger)index) {
     if (!str) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @"string insert nil.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(insertString:atIndex:)),
             @"reason":reason,
@@ -43,11 +42,10 @@ DYStaticHookPrivateClass(__NSCFString,
     }
     if (index > self.length) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"index %@ out of length %@ of string.", @(index), @(self.length)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(insertString:atIndex:)),
             @"reason":reason,
@@ -73,11 +71,10 @@ DYStaticHookPrivateClass(__NSCFString,
     NSUInteger index = range.location + range.length;
     if (index > self.length) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"range (%@,%@) out of length %@ of string.", @(range.location), @(range.length), @(self.length)];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(deleteCharactersInRange:)),
             @"reason":reason,

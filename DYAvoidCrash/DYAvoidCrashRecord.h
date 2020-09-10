@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)recordErrorWithReason:(nullable NSDictionary *)reason
                     errorType:(DYAvoidCrashType)type;
 
-+ (NSString *)getMainCallStackSymbolMessageWithCallStackSymbols:(NSArray<NSString *> *)callStackSymbols;
+//+ (NSString *)getMainCallStackSymbolMessageWithCallStackSymbols:(NSArray<NSString *> *)callStackSymbols;
 
 @end
 

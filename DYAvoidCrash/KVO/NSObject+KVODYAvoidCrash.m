@@ -100,11 +100,10 @@ static void(*__dy_hook_orgin_function_removeObserver)(NSObject* self, SEL _cmd ,
                 [observer observeValueForKeyPath:keyPath ofObject:object change:change context:context];
             } @catch (NSException *exception) {
                 NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-                NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+                
                 NSString *reason = [NSString stringWithFormat:@"non fatal Error %@ ", [exception description]];
                 
                 NSDictionary *errorInfo = @{
-                    @"place":place,
                     @"target":[self class],
                     @"method":@"",
                     @"reason":reason,
@@ -187,11 +186,10 @@ DYStaticHookClass(NSObject,
     }];
     if (contained) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @" KVO add Observer to many timers.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(addObserver:forKeyPath:options:context:)),
             @"reason":reason,
@@ -229,11 +227,10 @@ DYStaticHookClass(NSObject,
     }];
     if (removed) {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @"reason : KVO remove Observer to many times.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(removeObserver:forKeyPath:)),
             @"reason":reason,

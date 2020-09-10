@@ -34,11 +34,10 @@
         }
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = @"an object dealloc not invalidate Timer.";
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":NSStringFromSelector(self.aSelector),
             @"reason":reason,

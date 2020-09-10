@@ -21,11 +21,10 @@ DYStaticHookPrivateClass(__NSDictionaryM,
     } else {
         
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"key or value appear nil- key is %@, obj is %@", aKey, anObject];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(setObject:forKey:)),
             @"reason":reason,
@@ -51,11 +50,10 @@ DYStaticHookPrivateClass(__NSDictionaryM,
         DYHookOrgin(anObject,aKey);
     } else {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"key or value appear nil- key is %@, object is %@", aKey, anObject];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(setObject:forKeyedSubscript:)),
             @"reason":reason,
@@ -78,11 +76,10 @@ DYStaticHookPrivateClass(__NSDictionaryM,
         DYHookOrgin(aKey);
     } else {
         NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-        NSString *place = [DYAvoidCrashRecord getMainCallStackSymbolMessageWithCallStackSymbols:callStackSymbolsArr];
+        
         NSString *reason = [NSString stringWithFormat:@"key appear nil- key is %@.", aKey];
         
         NSDictionary *errorInfo = @{
-            @"place":place,
             @"target":[self class],
             @"method":DYSEL2Str(@selector(removeObjectForKey:)),
             @"reason":reason,
